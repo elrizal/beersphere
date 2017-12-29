@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+</head>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<body>
+  
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Beersphere</a>     
+      
+      <!--
+      <div class="nav-wrapper container" posistion="center">
+          <form id="beer-form" style="width: 30%;">
+      <input type="text" id="beer-input"> <input id="find-beer" type="submit" value="Beer Search">
+    </form></div> -->
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li></ul>
+         
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+<div class="container">
+    <h1>Beer Search</h1>
+ <!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
+    <form id="beer-form">
+      <label for="beer-input">Search for a beer</label>
+      <input type="text" id="beer-input"><br>
+
+      <input id="find-beer" type="submit" value="Beer Search" button class="btn waves-effect waves-light" >
+    </form>
+<div id="beer-view"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    //   $(document).keypress(function(event){
+    // var keycode = (event.keyCode ? event.keyCode : event.which);
+    // if(keycode == '13'){
+    //     // Here, it prevents the submit button from trying to submit a form when clicked
+    //     event.preventDefault();
+      $("#find-beer").on("click", function(event) {
+        event.preventDefault();
+        var beer = $("#beer-input").val();
+        console.log("beer = " + beer)
+       
+       if (beer === ""){
+    var queryURL = "https://api.punkapi.com/v2/beers/?page=2&per_page=60&"+beer 
+    console.log("no beer entered but here's a random beer " + beer)
+       }
+       else {
+        var queryURL = "https://api.punkapi.com/v2/beers/?beer_name=" + beer ;
+        console.log("user chosen beer " + beer)
+}
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          console.log(response);
+for (var i = 0; i < response.length; i++) {
+ 
+        var beerName = response[i].name;
+        var beerTagline = response[i].tagline;
+        var beerDescription = response[i].description;
+        var beerImage = response[i].image_url;
+        var beerAbv = response[i].abv;
+        var beerFood = response[i].food_pairing[0];
+        var malt = response[i].ingredients.malt;
+        var hops = response[i].ingredients.hops;
+        var yeast = response[i].ingredients.yeast;
+        var beerBrewed = response[i].first_brewed;
+        var beerBrewery = response[i].withBreweries;
+        var beerOrganic = response[i].isOrganic;
+        var convertSearchterm = JSON.stringify(response);
+         
+        for (var j = 0; j < malt.length; j++) {
+         console.log( "ingredient " + malt[i].name + "value: " + malt[i].amount.value + "unit: " + malt[i].amount.unit)
+        }
+        for (var k = 0; k < hops.length; k++) {
+         console.log( "ingredient " + hops[i].name + "value: " + hops[i].amount.value + "unit: " + hops[i].amount.unit)
+        }
+        for (var m = 0; m < yeast.length; m++) {
+         console.log( "ingredient " + yeast)
+        }
+      } //loop
+      document.getElementById(response.name);
+           var beerDiv= $("#beer-view").html(response.name);
+          beerDiv.append( "<h3>" + "NAME: " + beerName + "</h3>" + "<hr>" +  "TAGLINE: " + beerTagline + "<hr>" +  "LABEL: " + beerImage + "<hr>" + "DESCRIPTION: " + beerDescription + "<hr>" + "ALCHOHOL CONTENT: " + beerAbv + "<hr>" +  "FOOD PAIRINGS: " + beerFood + "<hr>" + "YEAR BREWED: " + beerBrewed + "<hr>" + "BREWERY: " + beerBrewery + "<hr>" + "ORGANIC: " + beerOrganic + "<hr>" + "INGREDIENTS: " );
+         
+          $("beer-view").html("<hr>");
+          if (response.indexOf(beer) != -1){
+           var index = response.indexOf(beer) 
+           var id = response.indexOf(beer) + 1
+            $("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
+        }
+  })
+});
+    </script>
+  </div>
+</body>
+
+</html>
+
+
+<!--OLD JS
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          console.log(response);
+          // var beer = $("#beer-input").val().trim();
+        var convertSearchterm = $("#beer-input").text(JSON.stringify(response));
+        var beerDiv= $("#beer-view");
+        var beerName= response.name;
+        var headerName = $("<h3>").text("Name: " + beerName);
+        beerDiv.append(headerName);
+        var imgUrl = response.img_url;
+        var beerImage = $("<img>").attr("src", imgUrl);
+        beerDiv.append(beerImage)
+        var beerTagline = response.tagline;
+        var pTagline = $("<p>").text("<i>" + beerTagline + "</i>");
+        beerDiv.append(pTagline);
+        var beerAbv = response.abv;
+        var pAbv = $("<p>").text("ABV: " + beerAbv);
+        beerDiv.append(pAbv);
+        var beerFood = response.food_pairing;
+        var pFood = $("<p>").text("Suggested Food Pairings: " + beerFood);
+        beerDiv.append(pFood);
+      
+          // document.getElementById(response.name);
+          // $("beer-view").html(response.name);
+          // $("#beer-view").append("<h3>" + "NAME: " + beerName + "</h3>" + "<hr>" +  " TAGLINE: " + beerTagline);
+          // $("beer-view").html("<hr>");
+        //   if (response.indexOf(beer) != -1){
+        //    var index = response.indexOf(beer) 
+        //    var id = response.indexOf(beer) + 1
+        //     $("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
+        // }
+        });
+            }
+});
+        // $ curl https://api.punkapi.com/v2/beers
+        // $("#beer-view").text(object);
+        //   // $("#beer-view").text(response[0].name + "the iD of this beer is: " + response[0].id + "which is conveniently +1 from its index number in the response array");
+        //   document.getElementById(response.name);
+        //   $("beer-view").html(response.name);
+        //   if (response.indexOf(beer) != -1){
+        //   	var index = response.indexOf(beer) 
+        //   	var id = response.indexOf(beer) + 1
+            
+          	// $("#beer-view").text("HA this exists at id#" + response.indexOf(beer) + 1 )
+          	// $("#beer-view").text("it's tagline is: " + response[index].tagline )
+      
+    </script>
+  </div>
+</body>
+</html>
+  <!-- <script>
+  	var beers = ["Corona", "Coors", "Bud Lite"];
+  	function displayBeerInfo() {
+        var beer = $(this).attr("data-name");
+        var queryURL = "http://api.brewerydb.com/v2/?" + beers + "key=b555d7bfc98fcf0265ec50402b0b87a4";
+       
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          $("#beer-view").text(JSON.stringify(response));
+        });
+        console.log(beers);
+		
+};
+    // Capture Button Click
+    
+  </script>
+	
+</body>
+</html> -->
