@@ -3,14 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Search</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script type="text/javascript" src="js-materialize/materialize.min.js"></script>
-    <script src="js-materialize/cards.js"></script>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   
-  <body style="background: #232323; color: gray">
+  <body style=" color: gray">
     
     <nav class="light-blue lighten-1" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Beersphere</a>
@@ -39,25 +37,18 @@
       <div class="container" id="beer-view" style="padding:10px;">
         
         <div class="row">
-          
-          <div class="col s12 m6 l3">
-            <div class="card">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" style="margin:auto; width: auto; max-height: 320px; padding: 5px;" src="https://images.punkapi.com/v2/2.png">
-              </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">This is a link</a></p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12 m6 l3" id="dynoCard">
+          <div class="col s12 m12 l3" id="dynoCard">
+             <!-- Modal Trigger -->
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
             <!-- <p>
               <div class="card"> -->
                 <!-- <div class="card-image waves-effect waves-block waves-light"> -->
@@ -84,20 +75,24 @@
                 LikeBtn.com END -->
               </div>
             </div>
-            
           </div>
-          <script type="text/javascript">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          
+<script type="text/javascript">
           //   $(document).keypress(function(event){
           // var keycode = (event.keyCode ? event.keyCode : event.which);
           // if(keycode == '13'){
           //     // Here, it prevents the submit button from trying to submit a form when clicked
-          //     event.preventDefault();
+          //     event.preventDefault();  $('.modal').modal();
+$(document).ready(function(){
+          $('.modal').modal();
           $("#find-beer").on("click", function(event) {
           event.preventDefault();
           var beer = $("#beer-input").val();
           console.log("beer = " + beer)
           if (beer === ""){
-          var queryURL = "https://api.punkapi.com/v2/beers/?page=2&per_page=60&"+beer
+          var queryURL = "https://api.punkapi.com/v2/beers/?page=2&per_page=60&" + beer
           console.log("no beer entered but here's a random beer " + beer)
           }
           else {
@@ -132,29 +127,43 @@
           for (var m = 0; m < yeast.length; m++) {
           console.log( "ingredient " + yeast)
           }
-          } //loop
-          document.getElementById(response.name);
-          var beerDiv= $("#beer-view").html(response.name);
-          beerDiv.append( "<h3>" + "NAME: " + beerName + "</h3>" + "<hr>" +  "TAGLINE: " + beerTagline + "<hr>" +  "LABEL: " + beerImage + "<hr>" + "DESCRIPTION: " + beerDescription + "<hr>" + "ALCHOHOL CONTENT: " + beerAbv + "<hr>" +  "FOOD PAIRINGS: " + beerFood + "<hr>" + "YEAR BREWED: " + beerBrewed + "<hr>" + "BREWERY: " + beerBrewery + "<hr>" + "ORGANIC: " + beerOrganic + "<hr>" + "INGREDIENTS: " );
-          // $("#beer-view").html("<hr>");
+          // } //loop
+          // document.getElementById(response.name);
+          // var beerDiv= $("#beer-view").html(response.name);
+          // beerDiv.append( "<h3>" + "NAME: " + beerName + "</h3>" + "<hr>" +  "TAGLINE: " + beerTagline + "<hr>" +  "LABEL: " + beerImage + "<hr>" + "DESCRIPTION: " + beerDescription + "<hr>" + "ALCHOHOL CONTENT: " + beerAbv + "<hr>" +  "FOOD PAIRINGS: " + beerFood + "<hr>" + "YEAR BREWED: " + beerBrewed + "<hr>" + "BREWERY: " + beerBrewery + "<hr>" + "ORGANIC: " + beerOrganic + "<hr>" + "INGREDIENTS: " );
+          // // $("#beer-view").html("<hr>");
           var  beerCard = $('<div>')
             beerCard.addClass('card blue-grey darken-1')
             var beerContent = $('<div>')
               beerContent.addClass("card-content white-text")
               var cardSpan = $('<span>')
                 cardSpan.addClass('card-title')
-                cardSpan.html("beer's name")
+                cardSpan.html(response.name)
                 beerContent.prepend(cardSpan)
                 var cardText=$("<p>")
                   cardText.addClass('card-text')
-                  cardText.html("beer's description blah blah")
+                  cardText.append(beerFood)
                   beerContent.append(cardText)
-                  beerCard.html(beerContent)
+                   var cardImage=$("<img>")
+                  cardImage.addClass('card-image')
+                  cardImage.css('height',"200px")
+                  cardImage.attr('src',beerImage)
+                  beerContent.append(cardImage)
+                  var trigger=$('<button>')
+                  trigger.addClass("waves-effect waves-light btn ")
+                  trigger.attr("id",'trigger')
+                  trigger.attr("data-target","modal1")
+                  trigger.text("Get Recipes")
+                  beerContent.append(trigger)
+                  beerCard.append(beerContent)
                   $('#dynoCard').html(beerCard)
-                  if (response.indexOf(beer) == undefined){
-                  var index = response.indexOf(beer)
-                  var id = response.indexOf(beer) + 1
-                  $("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
+ $(".card").on("click","button", function(event) {
+                  $('#modal1').modal('open');
+})
+                  // if (response.indexOf(beer) == undefined){
+                  // var index = response.indexOf(beer)
+                  // var id = response.indexOf(beer) + 1
+                  // $("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
                   /*  <div class="row">
                     <div class="col s12 m6">
                       <div class="card blue-grey darken-1">
@@ -172,8 +181,11 @@
                   </div>
                   */
                   }
-                  })
                   });
-                  </script>
-                </body>
-              </html>
+        });
+})
+                  
+</script>
+               
+</body>
+</html>
