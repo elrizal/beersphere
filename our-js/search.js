@@ -69,10 +69,14 @@ $(document).ready(function() {
 	$(".modal").modal();
 	    $(document).ready(function(){
       $('.parallax').parallax();
+
+
     });
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
-		var beer = $("#beer-input").val();
+
+		var beer = $("#beer-input").val();  
+		
 		console.log("beer = " + beer);
 		if (beer === "") {
 			var queryURL =
@@ -82,6 +86,7 @@ $(document).ready(function() {
 			var queryURL =
 				"https://api.punkapi.com/v2/beers/?beer_name=" + beer;
 			console.log("user chosen beer " + beer);
+			$("#beer-input").empty();
 		}
 		$.ajax({
 			url: queryURL,
@@ -121,10 +126,10 @@ $(document).ready(function() {
 
 				var cardSpan = $("<span>");
 				cardSpan.addClass("card-title"); 
+				cardSpan.append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
 
 				var cardText = $("<p>");
 				cardText.addClass("card-text");
-				cardText.append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
 				cardSpan.html(beer);
 
 				var cardImage = $("<img>");
@@ -133,29 +138,42 @@ $(document).ready(function() {
 				cardImage.attr("src", beerImage);
 				beerContent.append(cardImage);
 
-				cardSpan.addClass("card-title").text(beerName + beerTagline);
-				beerContent.prepend(cardSpan);
+				cardSpan.addClass("card-title").text(beerName);
+				beerContent.prepend(cardSpan).append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
 
 				// var foodIcon = $("<i>").addClass("material-icons").text("add"); 
 				// cardText.append(foodIcon + "Great with: " + beerFood + "<br>").attr("material-icons", "local_dining");
 				
 				beerContent.append(cardText)
 				beerCard.append(beerContent);
+				var dynamicCard = $("#dynoCard");
 				$("#dynoCard").append(beerCard);
 				beerCard.addClass("card").addClass("col s12 m6 l3").append(beerContent);
+				// var beerRow = $("<div>");
+				//  beerRow.addClass("row").append(dynamicCard);
 
 				//module trigger and adding the card classes
 				var trigger = $("<button>");
 				trigger.addClass("waves-effect waves-light btn");
 				trigger.attr("id", "trigger");
 				trigger.attr("data-target", "modal1");
-				trigger.text("More Info").css({
-					 display: "block", margin: "auto"});
+				trigger.text("More Info").css({ display: "block", margin: "auto"});
 				beerContent.append(trigger);
 
 				$(".card").on("click", "button", function(event) {
 					$("#modal1").modal("open");
+	// NEED TO APPEND THIS  to the Container before the beer div <div id="modal1" class="modal modal-fixed-footer">
+  //   <div class="modal-content">
+  //     <h4>Modal Header</h4>
+  //     <p>A bunch of text</p>
+  //   </div>
+  //   <div class="modal-footer">
+  //     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="material-icons">close</i>Close</a>
+  //   </div>
+  // </div>
 				});
+				
+				//FOR MAKING INVALID INPUTS:
 				// if (response.indexOf(beer) == undefined){
 				// var index = response.indexOf(beer)
 				// var id = response.indexOf(beer) + 1
