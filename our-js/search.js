@@ -67,6 +67,9 @@
 //new
 $(document).ready(function() {
 	$(".modal").modal();
+	    $(document).ready(function(){
+      $('.parallax').parallax();
+    });
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
 		var beer = $("#beer-input").val();
@@ -114,15 +117,15 @@ $(document).ready(function() {
 				var beerContent = $("<div>");
 
 				beerCard.addClass("card").addClass("col s12 m6 l3").css("margin", "auto");
-				beerContent.addClass("card-content gray-text").css("padding", "4px");
+				beerContent.addClass("card-content gray-text").css("padding", "10px");
 
 				var cardSpan = $("<span>");
 				cardSpan.addClass("card-title"); 
+
 				var cardText = $("<p>");
 				cardText.addClass("card-text");
-				cardText.prepend("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
+				cardText.append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
 				cardSpan.html(beer);
-
 
 				var cardImage = $("<img>");
 				cardImage.addClass("card-image");
@@ -130,15 +133,16 @@ $(document).ready(function() {
 				cardImage.attr("src", beerImage);
 				beerContent.append(cardImage);
 
-				cardSpan.addClass("card-title").text(response[i].name);
+				cardSpan.addClass("card-title").text(beerName + beerTagline);
 				beerContent.prepend(cardSpan);
-
 
 				// var foodIcon = $("<i>").addClass("material-icons").text("add"); 
 				// cardText.append(foodIcon + "Great with: " + beerFood + "<br>").attr("material-icons", "local_dining");
-				beerContent.append(cardText);
+				
+				beerContent.append(cardText)
 				beerCard.append(beerContent);
- 				$("#dynoCard").append(beerCard);
+				$("#dynoCard").append(beerCard);
+				beerCard.addClass("card").addClass("col s12 m6 l3").append(beerContent);
 
 				//module trigger and adding the card classes
 				var trigger = $("<button>");
@@ -148,10 +152,6 @@ $(document).ready(function() {
 				trigger.text("More Info").css({
 					 display: "block", margin: "auto"});
 				beerContent.append(trigger);
-				 beerCard.append(beerContent);
-				beerCard.addClass("card").addClass("col s12 m6 l3").append(beerContent);
-
-				$("#dynoCard").append(beerCard);
 
 				$(".card").on("click", "button", function(event) {
 					$("#modal1").modal("open");
