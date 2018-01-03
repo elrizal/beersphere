@@ -70,7 +70,6 @@ $(document).ready(function() {
 	    $(document).ready(function(){
       $('.parallax').parallax();
 
-
     });
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
@@ -123,14 +122,14 @@ $(document).ready(function() {
 
 				beerCard.addClass("card").addClass("col s12 m6 l3").css("margin", "auto");
 				beerContent.addClass("card-content gray-text").css("padding", "10px");
+				beerContent.css('overflow','hidden');
 
-				var cardSpan = $("<span>");
-				cardSpan.addClass("card-title"); 
-				cardSpan.append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
+				var cardDiv = $("<div>");
+				cardDiv.addClass("card-title").css("line-height", "15px");
 
 				var cardText = $("<p>");
 				cardText.addClass("card-text");
-				cardSpan.html(beer);
+				cardDiv.html(beer);
 
 				var cardImage = $("<img>");
 				cardImage.addClass("card-image");
@@ -138,8 +137,9 @@ $(document).ready(function() {
 				cardImage.attr("src", beerImage);
 				beerContent.append(cardImage);
 
-				cardSpan.addClass("card-title").text(beerName);
-				beerContent.prepend(cardSpan).append("<i>" + beerTagline).css({color: "#a8a4b0", margin: "auto", padding: "5px"});
+				cardDiv.addClass("card-title").text(beerName).css({color: "#000000"});
+				beerContent.prepend(cardDiv);
+				// .append("<i>" + "<center>" + beerTagline).css({color: "gray", padding: "5px"});
 
 				// var foodIcon = $("<i>").addClass("material-icons").text("add"); 
 				// cardText.append(foodIcon + "Great with: " + beerFood + "<br>").attr("material-icons", "local_dining");
@@ -148,9 +148,12 @@ $(document).ready(function() {
 				beerCard.append(beerContent);
 				var dynamicCard = $("#dynoCard");
 				$("#dynoCard").append(beerCard);
-				beerCard.addClass("card").addClass("col s12 m6 l3").append(beerContent);
+
+
+				beerCard.addClass("card").addClass("col s12 m6 l4").append(beerContent).css("margin", "5px", "max-height", "350px", "min-height", "350px", "width", "30%", "overflow", "hidden");
 				// var beerRow = $("<div>");
 				//  beerRow.addClass("row").append(dynamicCard);
+
 
 				//module trigger and adding the card classes
 				var trigger = $("<button>");

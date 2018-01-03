@@ -2159,6 +2159,7 @@ html {
  */
 body {
   margin: 0;
+  color: black;
 }
 
 /* HTML5 display definitions
@@ -4726,8 +4727,9 @@ small {
 }
 
 .card .card-title {
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
 }
 
 .card .card-title.activator {
@@ -4846,16 +4848,43 @@ small {
   width: 100%;
 }
 
+
+#myList{
+
+height:100%;
+width:100% ;
+}
+
+
+
+.inlineItems{
+
+width: 24% ;
+border-style: solid;
+border-color: tomato;
+border-width: 5px;
+margin: 5px;
+display: block;
+background-color: papayawhip;
+height:250px ;
+display: inline;
+float:left;
+position: relative;
+text-align: center
+
+}
+
 .card .card-image .card-title {
   color: #fff;
-  position: absolute;
+  text-align: center;
   bottom: 0;
   left: 0;
   max-width: 100%;
-  padding: 24px;
+  padding: 5px;
 }
 
 .card .card-content {
+  text-align: center;
   padding: 24px;
   border-radius: 0 0 2px 2px;
 }
@@ -4863,6 +4892,7 @@ small {
 .card .card-content p {
   margin: 0;
   color: inherit;
+  text-align: center;
 }
 
 .card .card-content .card-title {
@@ -5208,7 +5238,7 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #f48a1e;
+  background-color: #3ca18f;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: .2s ease-out;
@@ -5217,7 +5247,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover {
-  background-color: #fb9c3c;
+  background-color: #63c194;
 }
 
 .btn-floating {
@@ -5499,6 +5529,19 @@ button.btn-floating {
   left: 0;
   height: 18px;
 }
+
+#myRow{
+
+  text-align: center;
+    padding-left: auto;
+  padding-right:auto;
+}
+
+#myCol{
+  margin-left: auto;
+  margin-right:auto;
+}
+
 
 /*!
  * Waves v0.6.0
