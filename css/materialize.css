@@ -3,6 +3,8 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ @import "components/cards";
+
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -4506,6 +4508,7 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   line-height: 1.1;
+
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -4534,6 +4537,9 @@ h4 {
   font-size: 2.28rem;
   line-height: 110%;
   margin: 1.14rem 0 0.912rem 0;
+  color: black;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -5717,6 +5723,7 @@ button.btn-floating {
 
 .modal h1, .modal h2, .modal h3, .modal h4 {
   margin-top: 0;
+  font-family: 'Oswald', sans-serif;
 }
 
 .modal .modal-content {

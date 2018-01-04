@@ -40,11 +40,11 @@ $(document).ready(function() {
 				var beerOrganic = response[i].isOrganic;
 				var convertSearchterm = JSON.stringify(response);
 
-				var beerCard = $("<div>").css("float", "left");
+				var beerCard = $("<li>").css("float", "left");
 				var beerContent = $("<div>").css("max-width", "300px");
 
 				beerCard
-					.addClass("collection")
+					.addClass("collection-item")
 					.css("width", "300px", "float", "left"); //.addClass("col s12 m6 l3").css("margin", "auto");
 				beerContent
 					.addClass("card-content gray-text")
@@ -91,9 +91,6 @@ $(document).ready(function() {
 				$("#list-stuff").append(beerCard);
 				beerCard.addClass("card").css("margin", "5px", "float", "left");
 				//.addClass("col s10 m6 l3").append(beerContent).css("margin", "5px", "max-height", "350px", "min-height", "350px", "width", "30%", "overflow", "hidden", "position", "absolute", "left", "0px", "top", "0px");
-
-		//*** 
-			
 
 				//module trigger and adding the card classes
 				var trigger = $("<button>");
