@@ -2159,9 +2159,16 @@ html {
  */
 body {
   margin: 0;
-  color: black;
+  color: darkgray;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
+main {
+    flex: 1 0 auto;
+  }
+      
 /* HTML5 display definitions
    ========================================================================== */
 /**
@@ -2880,10 +2887,24 @@ ul.staggered-list li {
 }
 
 .page-footer {
+    min-height: 100%;
+  margin-bottom: -50px;
   padding-top: 20px;
   color: #fff;
-  background-color: #ee6e73;
+  background-color: 
+#33363e;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
 
 .page-footer .footer-copyright {
   overflow: hidden;
@@ -4724,12 +4745,16 @@ small {
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
   border-radius: 2px;
+    font-family: 'Oswald', sans-serif;
+
 }
 
 .card .card-title {
+  font-family: 'Oswald', sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #000000;
+  text-transform: uppercase;
 }
 
 .card .card-title.activator {

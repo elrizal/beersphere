@@ -8,12 +8,13 @@
 		<!--     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		-->
 		<link rel="stylesheet" href="css/materialize.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 		<script type="text/javascript" src="js-materialize/materialize.min.js"></script>
 		<script src="js-materialize/cards.js"></script>
 	</head>
 	
 	<nav class="light-blue lighten-1" role="navigation">
-		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Beersphere</a>
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"> <i class="large material-icons" style="font-size: 40px;">local_drink</i> Beersphere</a>
 		
 		<ul class="right hide-on-med-and-down">
 			<li><a href="index.html">Home</a></li></ul>
@@ -25,44 +26,43 @@
 			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 		</div>
 	</nav>
-
 	<div id="top" class="parallax-container">
-      <div class="parallax"><img src="images/chips-drink.jpg" style="width: 30%; background-position: center; "></div>
-    
-
-		<form id="beer-form" style="margin-top: 70px; color: white;">
-  <div class="container">
-			<label for="beer-input">Look up a beer or a food to match it</label><br>
+		<div class="parallax"><img src="images/chips-drink.jpg" style="width: 30%; background-position: center; "></div>
+		
+		<form id="beer-form" style="margin-top: 120px; color: white;">
+			<div class="container">
+				<label for="beer-input">Look up a beer or a food to match it</label><br>
+				
+				<input type="text" id="beer-input" style="width: 60%;"><input id="find-beer" type="submit" value="GO" button class="btn waves-effect waves-light" style="margin-bottom: 20px;"></div>
+			</form>
+		</div>
+		<div class="container" style="text-align: center;">
 			
-			<input type="text" id="beer-input" style="width: 60%;"><input id="find-beer" type="submit" value="GO" button class="btn waves-effect waves-light" style="margin-bottom: 20px;"></div>
-		</form>
-    </div>
-
-	<div class="container">
-		
-
-	 <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="material-icons">close</i>Close</a>
-    </div>
-  </div>
-	<div id="beer-view">
-		
-		<div class="row">
-			<div  id="dynoCard">
-				<!-- card content
-						-->
-					</div>
+			<div id="modal1" class="modal modal-fixed-footer">
+				<div class="modal-content">
+					<h4>Modal Header</h4>
+					<p>A bunch of text</p>
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><i class="material-icons">close</i>Close</a>
 				</div>
 			</div>
-			<div class="fixed-action-btn">
-<a href="#top" style="margin: auto; float: right; margin-bottom: 10px;" button class="btn-floating btn-large waves-effect waves-light green"> <i class="material-icons" >arrow_upward</i></a>
-				</div>
+			<div id="beer-view">
+				<div  id="dynoCard">
+					<ul>
+						<li id="list-stuff" class="collection-item">
+							
+						</li>
 
-			<script src="our-js/search.js"></script>
-						</body>
-					</html>
+					</ul>
+					<!-- card content-->
+				</div>
+				
+			</div>
+			<div class="fixed-action-btn">
+				<a href="#top" style="margin: auto; float: right; margin-bottom: 10px;" button class="btn-floating btn-large waves-effect waves-light green"> <i class="material-icons" >arrow_upward</i></a>
+			</div>
+		</div>
+		<script src="our-js/search.js"></script>
+	</body>
+</html>
