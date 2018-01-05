@@ -3,7 +3,6 @@ $(document).ready(function() {
 	$(document).ready(function() {
 		$(".parallax").parallax();
 	});
-
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
 
@@ -22,16 +21,11 @@ $(document).ready(function() {
 			console.log("user chosen beer " + beer);
 			$("#beer-input").empty();
 		}
-
 		$.ajax({
 			url: queryURL,
 			method: "GET"
 		}).done(function(response) {
 			console.log(response);
-				if (response.indexOf(beer) == undefined){
-				var index = response.indexOf(beer)
-				var id = response.indexOf(beer) + 1
-				$("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )}
 			for (var i = 0; i < response.length; i++) {
 				var beerName = response[i].name;
 				var beerTagline = response[i].tagline;
@@ -56,7 +50,7 @@ $(document).ready(function() {
 				var beerBrewery = response[i].withBreweries;
 				var beerOrganic = response[i].isOrganic;
 				var convertSearchterm = JSON.stringify(response);
-				
+
 				// for (var j = 0; j < malt.length; j++) {
 				// console.log( "ingredient " + malt[i].name + "value: " + malt[i].amount.value + "unit: " + malt[i].amount.unit)
 				// }
@@ -67,7 +61,7 @@ $(document).ready(function() {
 				// console.log( "ingredient " + yeast)
 				// }
 				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
-				var beerContent = $("<div>").css("width", "250px", "height", "250px");
+				var beerContent = $("<div>").css("width", "250px", "min-height", "250px");
 
 				beerCard.addClass("collection-item").css("margin", "auto");
 				beerContent
@@ -147,9 +141,9 @@ $(document).ready(function() {
 					$("#modal1").modal("open");
 					$("#modal-header").html(dataName);	
 					$("#modal-body").html( 
-						dataDescribe + "<h5>" + "Alcohol by volume" + "</h5>" +
-							dataAbv + "%" + "</div>" + "<h5>" + "First Brewed on " + "</h5>" + 
-							dataYear + "<h5>" + "Goes best with: " + "</h5>" + 
+						dataDescribe + "<h5>" + "Alcohol by volume" + "</h5>" + "<hr>" +
+							dataAbv + "%" + "</div>" + "<h5>" + "First Brewed on: " + "<hr>" + "</h5>" + 
+							dataYear + "<h5>" + "Goes best with: " +"<hr>" + "</h5>" + 
 							dataFood 
 					);
 					$("#food-input").val(dataFood);
@@ -237,9 +231,6 @@ $(document).ready(function() {
 								listItem.append(source);
 
 								$("#food-view").append(listItem);
-												//FOR MAKING INVALID INPUTS:
-			
-				
 							}
 						}
 					});

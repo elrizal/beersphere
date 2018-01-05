@@ -3,7 +3,7 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
- @import 'sass/_cards.scss';
+ @import '_cards.scss';
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -758,7 +758,7 @@
 }
 
 .light-blue {
-  background-color: #03a9f4 !important;
+  background-color: transparent !important;
 }
 
 .light-blue-text {
@@ -798,7 +798,7 @@
 }
 
 .light-blue.lighten-1 {
-  background-color: #dd6a38 !important;
+  background-color: transparent !important;
   height: 100px;
 }
 
@@ -2278,7 +2278,7 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 h1 {
-  font-size: 1em;
+  font-size: 0.5em;
   margin: 0.67em 0;
 }
 
@@ -2596,7 +2596,7 @@ a {
           box-shadow: none !important;
 }
 
-.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+.z-depth-1, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
@@ -2773,9 +2773,9 @@ video.responsive-video {
 }
 
 .parallax-container {
-  position: relative;
   overflow: hidden;
-  height: 600px;
+  height: 450px;
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -4236,8 +4236,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
-  width: 100%;
+  /*background-color: #ee6e73;*/
   height: 56px;
   line-height: 56px;
 }
@@ -4303,7 +4302,7 @@ nav .brand-logo {
 }
 
 nav .brand-logo.center {
-  left: 50%;
+  left: 90%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
@@ -4523,10 +4522,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-  font-size: 3rem;
-  line-height: 110%;
-  margin: 2.1rem 0 1.68rem 0;
+  font-size: 2rem;
+  line-height: 100%;
   text-shadow: 2px 2px 4px black;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -4938,12 +4938,12 @@ text-align: center
   bottom: 0;
   left: 0;
   max-width: 100%;
-  padding: 5px;
+  padding: 3px;
 }
 
 .card .card-content {
   text-align: center;
-  padding: 24px;
+  padding: 20px;
   border-radius: 0 0 2px 2px;
 }
 
@@ -4955,12 +4955,12 @@ text-align: center
 
 .card .card-content .card-title {
   display: block;
-  line-height: 32px;
+  line-height: 18px;
   margin-bottom: 8px;
 }
 
 .card .card-content .card-title i {
-  line-height: 32px;
+  line-height: 29px;
 }
 
 .card .card-action {

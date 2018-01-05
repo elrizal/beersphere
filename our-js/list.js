@@ -22,7 +22,6 @@ $(document).ready(function() {
 			console.log("user chosen beer " + beer);
 			$("#beer-input").empty();
 		}
-
 		$.ajax({
 			url: queryURL,
 			method: "GET"
@@ -56,20 +55,13 @@ $(document).ready(function() {
 				var beerBrewery = response[i].withBreweries;
 				var beerOrganic = response[i].isOrganic;
 				var convertSearchterm = JSON.stringify(response);
-				
-				// for (var j = 0; j < malt.length; j++) {
-				// console.log( "ingredient " + malt[i].name + "value: " + malt[i].amount.value + "unit: " + malt[i].amount.unit)
-				// }
-				// for (var k = 0; k < hops.length; k++) {
-				// console.log( "ingredient " + hops[i].name + "value: " + hops[i].amount.value + "unit: " + hops[i].amount.unit)
-				// }
-				// for (var m = 0; m < yeast.length; m++) {
-				// console.log( "ingredient " + yeast)
-				// }
-				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
-				var beerContent = $("<div>").css("width", "250px", "height", "250px");
 
-				beerCard.addClass("collection-item").css("margin", "auto");
+
+			
+				var beerCard = $("<li>");
+				var beerContent = $("<div>").css("width", "50%", "height", "250px");
+
+				beerCard.addClass("collection-item").css("margin", "auto", "width", "200px");
 				beerContent
 					.addClass("card-content gray-text")
 					.css("padding", "10px", "overflow", "hidden");
@@ -80,33 +72,19 @@ $(document).ready(function() {
 				beerContent.attr("data-food", beerFood);
 
 				var cardSpan = $("<span>");
-				cardSpan.addClass("card-title");
+				cardSpan.addClass("card-title").css("font-size", "16px");
 				cardSpan.append("<i>" + beerTagline)
-					.css({ color: "#1C1C1C", margin: "auto", padding: "5px" });
+					.css({ color: "#1C1C1C"});
 
 				var cardText = $("<p>");
 				cardText.addClass("card-text");
 				cardSpan.html(beer);
-
-				var cardImage = $("<img>");
-				cardImage.addClass("card-image");
-				cardImage.css({
-					height: "250px",
-					display: "block",
-					margin: "auto",
-					padding: "8px"
-				});
-				cardImage.attr("src", beerImage);
-				cardText.append(cardImage);
 
 				cardSpan.addClass("card-title").text(beerName);
 				beerContent
 					.prepend(cardSpan)
 					.append("<i>" + beerTagline)
 					.css({ color: "#a8a4b0", margin: "auto", padding: "5px" });
-
-				// var foodIcon = $("<i>").addClass("material-icons").text("add");
-				// cardText.append(foodIcon + "Great with: " + beerFood + "<br>").attr("material-icons", "local_dining");
 
 				beerContent.append(cardText);
 				beerCard.append(beerContent);
@@ -246,5 +224,6 @@ $(document).ready(function() {
 				});
 			}
 		});
+		});
+
 	});
-});
