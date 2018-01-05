@@ -61,7 +61,7 @@ $(document).ready(function() {
 				// console.log( "ingredient " + yeast)
 				// }
 				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
-				var beerContent = $("<div>").css("width", "250px", "min-height", "250px");
+				var beerContent = $("<div>").css("width", "250px", "height", "250px");
 
 				beerCard.addClass("collection-item").css("margin", "auto");
 				beerContent
@@ -141,9 +141,9 @@ $(document).ready(function() {
 					$("#modal1").modal("open");
 					$("#modal-header").html(dataName);	
 					$("#modal-body").html( 
-						dataDescribe + "<h5>" + "Alcohol by volume" + "</h5>" + "<hr>" +
-							dataAbv + "%" + "</div>" + "<h5>" + "First Brewed on: " + "<hr>" + "</h5>" + 
-							dataYear + "<h5>" + "Goes best with: " +"<hr>" + "</h5>" + 
+						dataDescribe + "<h5>" + "Alcohol by volume" + "</h5>" +
+							dataAbv + "%" + "</div>" + "<h5>" + "First Brewed on " + "</h5>" + 
+							dataYear + "<h5>" + "Goes best with: " + "</h5>" + 
 							dataFood 
 					);
 					$("#food-input").val(dataFood);
