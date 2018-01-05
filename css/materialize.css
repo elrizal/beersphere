@@ -3,6 +3,7 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ @import 'cards';
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -2164,11 +2165,13 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background: #e2e2ea;
+    background: #ffffff;
+    color: #2E2E2E;
+
 }
 
 main {
-    flex: 1 0 auto;
+    flex: 1 0 auto; 
   }
       
 /* HTML5 display definitions
@@ -2684,7 +2687,6 @@ video.responsive-video {
 
 .pagination li {
   display: inline-block;
-  border-radius: 2px;
   text-align: center;
   vertical-align: top;
   height: 30px;
@@ -4507,8 +4509,7 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  line-height: 1.1;
-
+  margin: inherit;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -4534,14 +4535,33 @@ h3 {
 }
 
 h4 {
+      font-weight: 800;
   font-size: 2.28rem;
   line-height: 110%;
   margin: 1.14rem 0 0.912rem 0;
-  color: black;
-  font-family: 'Oswald', sans-serif;
+  color: #2E2E2E;
   text-transform: uppercase;
 }
+hr {
+ margin: 5px 0;
+    height: 0.8px;
+  width: 200px;
+    background: gray;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, gray));
+}
 
+h5 { /*section header of mod*/
+letter-spacing: 2px;
+font-size: 14px;
+font-family: 'Oswald', sans-serif;
+text-transform: uppercase;
+color: gray;
+}
+h6 {
+  color: #525458;
+  font-size: 20px;
+}
+/*
 h5 {
   font-size: 1.64rem;
   line-height: 110%;
@@ -4553,6 +4573,7 @@ h6 {
   line-height: 110%;
   margin: 0.5rem 0 0.4rem 0;
 }
+*/
 
 em {
   font-style: italic;
@@ -4568,6 +4589,7 @@ small {
 
 .light, .page-footer .footer-copyright {
   font-weight: 300;
+  background-color: #191719;
 }
 
 .thin {
@@ -4751,12 +4773,10 @@ small {
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
   border-radius: 2px;
-    font-family: 'Oswald', sans-serif;
 
 }
 
 .card .card-title {
-  font-family: 'Oswald', sans-serif;
   font-size: 23px;
   font-weight: 600;
   color: #1C1C1C;
@@ -5723,9 +5743,19 @@ button.btn-floating {
 
 .modal h1, .modal h2, .modal h3, .modal h4 {
   margin-top: 0;
-  font-family: 'Oswald', sans-serif;
+}
+.modal h5 { /*section header of mod*/
+letter-spacing: 2px;
+font-size: 14px;
+font-family: 'Oswald', sans-serif;
+text-transform: uppercase;
+color: gray;
 }
 
+.modal h6 {
+  color: #525458;
+  font-size: 16px;
+}
 .modal .modal-content {
   padding: 24px;
 }
@@ -7393,7 +7423,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: fixed;
 }
 
-.table-of-contents li {
+.table-of-contents body
   padding: 2px 0;
 }
 
