@@ -26,6 +26,10 @@ $(document).ready(function() {
 			method: "GET"
 		}).done(function(response) {
 			console.log(response);
+				if (response.indexOf(beer) == undefined){
+				var index = response.indexOf(beer)
+				var id = response.indexOf(beer) + 1
+				$("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )}
 			for (var i = 0; i < response.length; i++) {
 				var beerName = response[i].name;
 				var beerTagline = response[i].tagline;
@@ -231,6 +235,9 @@ $(document).ready(function() {
 								listItem.append(source);
 
 								$("#food-view").append(listItem);
+												//FOR MAKING INVALID INPUTS:
+			
+				
 							}
 						}
 					});
