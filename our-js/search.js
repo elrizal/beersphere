@@ -31,7 +31,17 @@ $(document).ready(function() {
 				var beerDescription = response[i].description;
 				var beerImage = response[i].image_url;
 				var beerAbv = response[i].abv;
-				var beerFood = response[i].food_pairing[0];
+				var beerFood = response[i].food_pairing;
+
+				console.log('Foods are in an array ' + beerFood);
+				beerFood = beerFood.toString();
+				beerFood = beerFood.split(',').join(', ');
+
+				//if we remove index, beerFood is now an array.
+				//This means to diplay all foods we need a separate loop and some separate Jquery insode that loop
+				//then we need to also get that into the modal, and we have packed it as a value in the data-food attribute
+				//however, again, since it's an array, when you deal with it in the new modal, you may have to loop again
+
 				var malt = response[i].ingredients.malt;
 				var hops = response[i].ingredients.hops;
 				var yeast = response[i].ingredients.yeast;
@@ -39,6 +49,7 @@ $(document).ready(function() {
 				var beerBrewery = response[i].withBreweries;
 				var beerOrganic = response[i].isOrganic;
 				var convertSearchterm = JSON.stringify(response);
+
 
 				var beerCard = $("<li>").css("float", "left");
 				var beerContent = $("<div>").css("max-width", "300px");
@@ -92,43 +103,48 @@ $(document).ready(function() {
 				beerCard.addClass("card").css("margin", "5px", "float", "left");
 				//.addClass("col s10 m6 l3").append(beerContent).css("margin", "5px", "max-height", "350px", "min-height", "350px", "width", "30%", "overflow", "hidden", "position", "absolute", "left", "0px", "top", "0px");
 
-				//module trigger and adding the card classes
-				var trigger = $("<button>");
-				trigger.addClass("waves-effect waves-light btn");
-				trigger.attr("id", "trigger");
-				trigger.attr("data-target", "modal1");
-				trigger
-					.text("More Info")
-					.css({ display: "block", margin: "auto" });
+								var trigger = $('<button>');
+				trigger.addClass('waves-effect waves-light btn');
+				trigger.attr('id', 'trigger');
+				trigger.attr('data-target', 'modal1');
+				trigger.text('More Info').css({ display: 'block', margin: 'auto' });
 				beerContent.append(trigger);
 
-				// function makeTable(container, data) {
-				//     var table = $("<table/>").addClass('CSSTableGenerator').css("max-width", "400px");
-				//     $.each(data, function(rowIndex, r) {
-				//         var row = $("<tr/>");
-				//         $.each(r, function(colIndex, c) {
-				//             row.append($("<t"+(rowIndex == 0 ?  "h" : "d")+"/>").text(c));
-				//         });
-				//         table.append(row);
-				//     });
-				//     return container.append(table);
-				// }
+				$('.card').on('click', 'button', function(event) {
+					var dataName = $(this)
+						.parent()
+						.attr('data-name');
+					var dataDescribe = $(this)
+						.parent()
+						.attr('data-describe');
+					var dataAbv = $(this)
+						.parent()
+						.attr('data-abv');
+					var dataYear = $(this)
+						.parent()
+						.attr('data-year');
+					var dataFood = $(this)
+						.parent()
+						.attr('data-food');
 
-				// $(document).ready(function() {
-				//     var data = [[beerName], //headers
-				//                 [beerTagline]];
-				//     var cityTable = makeTable($(document.body), data);
-				// });
-
-				$(".card").on("click", "button", function(event) {
-					// var modalAdd = $("<div>");
-					// modalAdd.addClass("modal1");
-
-					// $('#modal1').modalAdd.addclass('modal modal-fixed-footer').addClass('modal-content');
-					// var descriptionPtag = $("<p>");
-
-					$("#modal1").modal("open"); //to test how it should work, use this
-
+					console.log('back of card beer ' + dataName);
+					$('#modal1').modal('open');
+					$('#modal-header').html(dataName);
+					$('#modal-body').html(
+						dataDescribe +
+							' ' +
+							'<hr>' +
+							dataAbv +
+							'%' +
+							'<hr>' +
+							'First Brewed on ' +
+							dataYear +
+							'<hr>' +
+							'Goes best with ' +
+							dataFood +
+							'<hr>'
+					);
+					$('#food-input').val(dataFood);
 					// NEED TO APPEND THIS  to the Container before the beer div <div id="modal1" class="modal modal-fixed-footer">
 					//   <div class="modal-content">
 					//     <h4>Modal Header</h4>
@@ -140,6 +156,72 @@ $(document).ready(function() {
 					// </div>
 				});
 
+				$('#find-food').on('click', function(event) {
+					event.preventDefault();
+
+					//now we've packed food array into value
+					var food = $('#food-input').val();
+
+					//loop through array to make dropdown
+
+					food = food.toString();
+					food = food.split(/[ ,]+/);
+
+					console.log('Food carried over: ' + food);
+
+					var proxy = 'https://cors-anywhere.herokuapp.com/';
+					var queryURL = 'https://food2fork.com/api/search?key=f18f20279482aabaea4a0d26c8810819&q=' + food;
+
+					$.ajax({
+						url: proxy + queryURL,
+						method: 'GET'
+					}).done(function(response) {
+						console.log(response);
+						console.log('hi');
+
+						var res = JSON.parse(response);
+						var recipes = res.recipes;
+						var count = res.count;
+						console.log(count);
+
+						if (count === 0) {
+							//alert("try again")
+							console.log('inside count === 0');
+							var noResults = $('<div>');
+							noResults.text('Try Again');
+							$('#food-view').append(noResults);
+						} else {
+							for (var i = 0; i < recipes.length; i++) {
+								var foodPublisher = recipes[i].publisher;
+								var foodTitle = recipes[i].title;
+								var foodSourceURL = recipes[i].source_url;
+								var foodImage = recipes[i].image_url;
+
+								// var foodDiv = $("#food-view");
+								var listItem = $('<li>');
+								listItem.addClass('food-item');
+								listItem.append(
+									'<h3>' + foodTitle + '</h3>' + '<hr>' + 'PUBLISHER: ' + foodPublisher + '<hr>'
+									// + "DESCRIPTION: " + foodSourceURL + "<hr>"
+								);
+
+								var source = $('<a>');
+								source.addClass('source');
+								source.text('Click here to get recipes for: ' + foodTitle);
+								source.attr('href', foodSourceURL);
+
+								var image = $('<img>');
+								image.addClass('food-image');
+								image.attr('src', foodImage);
+
+								listItem.append(image);
+								listItem.append(source);
+
+								$('#food-view').append(listItem);
+							}
+						}
+					});
+				});
 				//FOR MAKING INVALID INPUTS:
 				// if (response.indexOf(beer) == undefined){
 				// var index = response.indexOf(beer)

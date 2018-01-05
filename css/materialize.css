@@ -3,7 +3,6 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
- @import "components/cards";
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -2165,6 +2164,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: #e2e2ea;
 }
 
 main {
@@ -4757,9 +4757,9 @@ small {
 
 .card .card-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 16px;
+  font-size: 23px;
   font-weight: 600;
-  color: #000000;
+  color: #1C1C1C;
   text-transform: uppercase;
 }
 
