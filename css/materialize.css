@@ -3,7 +3,7 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
- @import 'cards';
+ @import 'sass/components/_cards.scss';
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -799,6 +799,7 @@
 
 .light-blue.lighten-1 {
   background-color: #dd6a38 !important;
+  height: 100px;
 }
 
 .light-blue-text.text-lighten-1 {
@@ -2277,7 +2278,7 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 h1 {
-  font-size: 2em;
+  font-size: 1em;
   margin: 0.67em 0;
 }
 
@@ -4271,6 +4272,7 @@ nav i.material-icons {
 nav .nav-wrapper {
   position: relative;
   height: 100%;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 993px) {
@@ -4438,10 +4440,14 @@ nav .input-field label.active i {
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     min-height: 64px;
+      margin: 0 auto;
+
   }
   nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
     height: 64px;
     line-height: 64px;
+      margin: 0 auto;
+
   }
   .navbar-fixed {
     height: 64px;
@@ -4517,9 +4523,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-  font-size: 4.2rem;
+  font-size: 3rem;
   line-height: 110%;
   margin: 2.1rem 0 1.68rem 0;
+  text-shadow: 2px 2px 4px black;
 }
 
 h2 {
@@ -5383,7 +5390,7 @@ button.btn-floating {
 
 .fixed-action-btn.horizontal ul {
   text-align: right;
-  right: 64px;
+  right: 34px;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -6535,6 +6542,8 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 
 .nav-wrapper .input-field input[type=search] {
   height: inherit;
+  margin: 0 auto;
+
   padding-left: 4rem;
   width: calc(100% - 4rem);
   border: 0;
