@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 				beerCard
 					.addClass("collection-item")
-					.css("width", "300px", "float", "left"); //.addClass("col s12 m6 l3").css("margin", "auto");
+					.css("width", "300px", "float", "left"); 
 				beerContent
 					.addClass("card-content gray-text")
 					.css("padding", "10px");
@@ -91,16 +91,12 @@ $(document).ready(function() {
 
 				cardDiv.addClass("card-title").text(beerName);
 				beerContent.prepend(cardDiv);
-				// .append("<i>" + "<center>" + beerTagline).css({color: "gray", padding: "5px"});
-			
-				// var foodIcon = $("<i>").addClass("material-icons").text("add");
-				// cardText.append(foodIcon + "Great with: " + beerFood + "<br>").attr("material-icons", "local_dining");
-
+				
 				beerContent.append(cardText);
 				beerCard.append(beerContent);
 				var dynamicCard = $("#list-stuff");
 				$("#list-stuff").append(beerCard);
-				beerCard.addClass("card").css("margin", "5px", "float", "left");
+				beerCard.addClass("card");
 				//.addClass("col s10 m6 l3").append(beerContent).css("margin", "5px", "max-height", "350px", "min-height", "350px", "width", "30%", "overflow", "hidden", "position", "absolute", "left", "0px", "top", "0px");
 
 								var trigger = $('<button>');
