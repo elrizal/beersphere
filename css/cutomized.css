@@ -1,8 +1,12 @@
 .collection-item, .card {
     margin: 20px;
 }
+
+li#list-stuff, #beer-view {
+    background:  #cdcecf;
+}
 .logo {
-    height: 130%;
+    min-height: 90px;
      padding: 20px;
 }
 #dynoCard {
@@ -12,16 +16,22 @@
     margin-top: 110px;
      color: white;
 }
-li {
+
+li.collection-item {
     margin: 20px;
-    display: inline-flex;
-    float: relative
+
 }
 .card {
-    margin: 20px;
-     float: left;
+    margin: 10px;
 }
-.beercontent {
-    width: 250px;
-     height: 250px
+.card-image{
+    max-height: 200px;
+  
+    display: block;
+    margin: auto;
+    padding: 10px;
+}
+.introheader {
+    margin: 10px;
+    text-align: center
 }
