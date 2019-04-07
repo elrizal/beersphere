@@ -23,11 +23,13 @@ $(document).ready(function() {
 			url: queryURL,
 			method: "GET"
 		}).done(function(response) {
-			console.log(response);
+		
 				if (response.indexOf(beer) == undefined){
-				var index = response.indexOf(beer)
-				var id = response.indexOf(beer) + 1
-				$("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )}
+					var index = response.indexOf(beer)
+					var id = response.indexOf(beer) + 1
+					$("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
+			}
+
 			for (var i = 0; i < response.length; i++) {
 				var beerName = response[i].name;
 				var beerTagline = response[i].tagline;
@@ -36,7 +38,6 @@ $(document).ready(function() {
 				var beerAbv = response[i].abv;
 				var beerFood = response[i].food_pairing;
 
-				console.log("Foods are in an array " + beerFood);
 				beerFood = beerFood.toString();
 				beerFood = beerFood.split(",").join(", ");
 
@@ -47,8 +48,7 @@ $(document).ready(function() {
 
 				var beerBrewed = response[i].first_brewed;
 				var beerBrewery = response[i].withBreweries;
-				var beerOrganic = response[i].isOrganic;
-				var convertSearchterm = JSON.stringify(response);
+				//var convertSearchterm = JSON.stringify(response);
 			
 				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
 				var beerContent = $("<div>").css("width", "250px", "height", "250px");
@@ -58,6 +58,7 @@ $(document).ready(function() {
 					.css("padding", "10px", "overflow", "hidden")
 					.attr("data-name", beerName)
 					.attr("data-describe", beerDescription)
+					.attr("data-img", beerImage)
 					.attr("data-abv", beerAbv)
 					.attr("data-year", beerBrewed)
 					.attr("data-brewery", beerBrewery)
@@ -91,28 +92,30 @@ $(document).ready(function() {
 
 				//Attaching the data of each beer found to pair with a card and modal:
 				$(".card").on("click", "button", function(event) {
-					// var dataName = $(this).parent().attr("data-name");
-					// var dataDescribe = $(this).parent().attr("data-describe");
-					// var dataAbv = $(this).parent().attr("data-abv");
-					// var dataYear = $(this).parent().attr("data-year");
-					// var dataFood = $(this).parent().attr("data-food");
-					// var dataBrewery = $(this).parent().attr("data-brewery");
-
 					var beerInfo = {
 						dataName: $(this).parent().attr("data-name"),
 						dataDescribe: $(this).parent().attr("data-describe"),
 						dataAbv: $(this).parent().attr("data-abv"),
 						dataYear: $(this).parent().attr("data-year"),
 						dataFood: $(this).parent().attr("data-food"),
-						dataBrewery: $(this).parent().attr("data-brewery")
+						dataBrewery: $(this).parent().attr("data-brewery"),
+						dataImage: $(this).parent().attr("data-img")
 					}
 
 					$("#modal1").modal("open");
 					$("#modal-header").html(beerInfo.dataName);	
-
+			
 					//And finally, adding the data to the modal of each beer listed:
-					$("#modal-body").html( `${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% </div> 
-					<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Brewery</h5> ${beerInfo.dataBrewery} <h5>Goes Great With</h5> ${beerInfo.dataFood}`
+					$("#modal-body").html(`
+					<div class="row">
+					<div class="col m5 s12" align="center"> 
+						<img src='${beerInfo.dataImage}' class='modalimg'>
+					</div> 
+					<div class="col m7 s12"> ${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% 
+						<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Brewery</h5> ${beerInfo.dataBrewery} <h5>Goes Great With</h5> ${beerInfo.dataFood}
+						</div> 
+					</div>
+					</div>`
 					);
 
 				});
