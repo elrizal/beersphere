@@ -3,7 +3,6 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
- @import '_cards.scss';
 
 .materialize-red {
   background-color: #e51c23 !important;
@@ -3060,7 +3059,6 @@ td, th {
 .collection .collection-item {
   background-color: #fff;
   line-height: 1.5rem;
-  padding: 10px 20px;
   margin: 0;
   border-bottom: 1px solid #e0e0e0;
 }
@@ -4453,36 +4451,6 @@ nav .input-field label.active i {
   }
 }
 
-@font-face {
-  font-family: "Roboto";
-  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff");
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: local(Roboto Medium), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
-  font-weight: 700;
-}
-
 a {
   text-decoration: none;
 }
@@ -4522,8 +4490,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 h1 {
-  font-size: 2rem;
-  line-height: 100%;
+  font-size: 2.3rem;
+  line-height: 1.5em;
+  letter-spacing: .1em;
   text-shadow: 2px 2px 4px black;
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
@@ -4543,11 +4512,12 @@ h3 {
 
 h4 {
       font-weight: 800;
-  font-size: 2.28rem;
   line-height: 110%;
-  margin: 1.14rem 0 0.912rem 0;
   color: #2E2E2E;
   text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: 1.6em;
 }
 hr {
  margin: 5px 0;
@@ -4955,7 +4925,7 @@ text-align: center
 
 .card .card-content .card-title {
   display: block;
-  line-height: 18px;
+  line-height: 1.2em;
   margin-bottom: 8px;
 }
 
@@ -5296,8 +5266,7 @@ text-align: center
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #3ca18f;
-  text-align: center;
+  background: #f57f17;
   letter-spacing: .5px;
   -webkit-transition: .2s ease-out;
   transition: .2s ease-out;
@@ -5305,7 +5274,7 @@ text-align: center
 }
 
 .btn:hover, .btn-large:hover {
-  background-color: #63c194;
+  background-color: #f9a825;
 }
 
 .btn-floating {
