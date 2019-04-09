@@ -1,9 +1,20 @@
 .collection-item, .card {
     margin: 20px;
 }
-
+label{
+    color: rgb(40, 41, 41)
+}
 li#list-stuff, #beer-view {
     background:  #cdcecf;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    min-height: 40vh
+}
+circle, body {
+    fill: #cdcecf;
+    background:  #cdcecf;
+
 }
 .logo {
     min-height: 90px;
@@ -16,22 +27,107 @@ li#list-stuff, #beer-view {
     margin-top: 110px;
      color: white;
 }
-
-li.collection-item {
-    margin: 20px;
-
+#modal1 {
+    width: 65vw;
+    height: 100vh;
 }
-.card {
-    margin: 10px;
+#top {
+    height: 80vh;
 }
+footer {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    width: 100%;
+    margin: 0 auto -155px; 
+}
+.card-content gray-text {
+    width: 250px; 
+    height: 250px;
+
+    overflow: hidden
+}
+li.collection-item.card {
+    margin: 15px;
+    min-height: 450px;
+    width: 23vw;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+h5 {
+    margin-top: 15px;
+}
+span.card-title {
+    color: rgb(28, 28, 28); 
+    margin: auto; line-height: 1em;
+    font-family: 'Oswald', sans-serif;
+    line-height: 2em;
+    padding: 5px;
+}
+
 .card-image{
-    max-height: 200px;
-  
+    max-height: 270px;
     display: block;
     margin: auto;
     padding: 10px;
 }
 .introheader {
-    margin: 10px;
+    margin-top: 10px;
     text-align: center
 }
+.modalimg {
+    max-height: 280px;
+}
+.topimg {
+    width: 1000px;
+    background-position: 
+    center center; 
+    display: block; 
+    transform: translate3d(-50%, 0px, 0px);
+}
+header {
+    position: relative;
+    height:60vh;
+   
+  }
+  
+  svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+  }
+  
+  @media (max-width: 699px) {
+    .svg--lg {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 700px) {
+    .svg--sm {
+      display: none;
+    }
+  }
+  
+@media only screen and (max-width: 1068px) {
+    li.collection-item.card  {
+        width: 35vw
+    }
+  }
+  @media only screen and (max-width: 700px) {
+    li.collection-item.card  {
+        width: 50vw
+    }
+  }
+  @media only screen and (max-width: 699px) {
+    li.collection-item.card  {
+        width: 40vw
+    }
+    .topimg {
+        width: 900px;
+    }
+  }

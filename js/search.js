@@ -11,11 +11,9 @@ $(document).ready(function() {
 		if (beer === "") {
 			var queryURL =
 				"https://api.punkapi.com/v2/beers/?page=2&per_page=60&" + beer;
-			console.log("no beer entered but here's a random beer " + beer);
 		} else {
 			var queryURL =
 				"https://api.punkapi.com/v2/beers/?beer_name=" + beer;
-			console.log("user chosen beer " + beer);
 			$("#beer-input").empty();
 		}
 
@@ -27,57 +25,44 @@ $(document).ready(function() {
 				if (response.indexOf(beer) == undefined){
 					var index = response.indexOf(beer)
 					var id = response.indexOf(beer) + 1
-					$("#beer-view").text("HA this exists at id# " + response.indexOf(beer) + 1 )
+					$("#beer-view").text("this exists at id# " + response.indexOf(beer) + 1 )
 			}
-
-			for (var i = 0; i < response.length; i++) {
-				var beerName = response[i].name;
-				var beerTagline = response[i].tagline;
-				var beerDescription = response[i].description;
-				var beerImage = response[i].image_url;
-				var beerAbv = response[i].abv;
-				var beerFood = response[i].food_pairing;
-
-				beerFood = beerFood.toString();
-				beerFood = beerFood.split(",").join(", ");
-
 				//if we remove index, beerFood is now an array.
 				//This means to diplay all foods we need a separate loop and some separate Jquery insode that loop
 				//then we need to also get that into the modal, and we have packed it as a value in the data-food attribute
 				//however, again, since it's an array, when you deal with it in the new modal, you may have to loop again
-
-				var beerBrewed = response[i].first_brewed;
-				var beerBrewery = response[i].withBreweries;
-				//var convertSearchterm = JSON.stringify(response);
 			
-				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
-				var beerContent = $("<div>").css("width", "250px", "height", "250px");
+			for (var i = 0; i < response.length; i++) {
+				var beerRes = {
+					beerName : response[i].name,
+					beerTagline : response[i].tagline,
+					beerDescription : response[i].description,
+					beerImage : response[i].image_url,
+					beerAbv : response[i].abv,
+					beerFood : response[i].food_pairing.toString().split(",").join(", "),
+					beerBrewed : response[i].first_brewed,
+				}
 
-				beerCard.addClass("collection-item").css("margin", "20px");
-				beerContent.addClass("card-content gray-text")
-					.css("padding", "10px", "overflow", "hidden")
-					.attr("data-name", beerName)
-					.attr("data-describe", beerDescription)
-					.attr("data-img", beerImage)
-					.attr("data-abv", beerAbv)
-					.attr("data-year", beerBrewed)
-					.attr("data-brewery", beerBrewery)
-					.attr("data-food", beerFood);
+				//Card UI building: tacking on the css is just a matter of preference here
+				var beerCard = $("<li class='collection-item'>").css("display", "inline-flex", "float", "relative");
+				var beerContent = $("<div class='card-content gray-text'>")
+					.attr("data-name", beerRes.beerName)
+					.attr("data-describe", beerRes.beerDescription)
+					.attr("data-img", beerRes.beerImage)
+					.attr("data-abv", beerRes.beerAbv)
+					.attr("data-year", beerRes.beerBrewed)
+					.attr("data-food", beerRes.beerFood);
 
-					//building out the cards:
-				var cardSpan = $("<span>").addClass("card-title").append("<i>" + beerTagline)
-					.css({ color: "#1C1C1C", margin: "auto", padding: "5px" });
+				var cardSpan = $("<span>").addClass("card-title").append(`<i> ${beerRes.beerTagline}`)
+					.css({ color: "#1C1C1C", margin: "auto", padding: "5px" }).html(beer);
 
 				var cardText = $("<p>").addClass("card-text");
-				cardSpan.html(beer);
-
-				var cardImage = $("<img>").addClass("card-image").attr("src", beerImage);
+				var cardImage = $(`<img class='card-image'>`).attr("src", beerRes.beerImage);
 				cardText.append(cardImage);
 
-				cardSpan.addClass("card-title").text(beerName);
-				beerContent
-					.prepend(cardSpan)
-					.append("<i>" + beerTagline)
+				cardSpan.addClass("card-title").text(beerRes.beerName);
+				beerContent.prepend(cardSpan)
+					.append(`<i> ${beerRes.beerTagline}</i>`)
 					.css({ color: "#a8a4b0", margin: "auto", padding: "5px" });
 
 				beerContent.append(cardText);
@@ -98,21 +83,20 @@ $(document).ready(function() {
 						dataAbv: $(this).parent().attr("data-abv"),
 						dataYear: $(this).parent().attr("data-year"),
 						dataFood: $(this).parent().attr("data-food"),
-						dataBrewery: $(this).parent().attr("data-brewery"),
 						dataImage: $(this).parent().attr("data-img")
 					}
 
 					$("#modal1").modal("open");
-					$("#modal-header").html(beerInfo.dataName);	
+					$("#modal-header").empty();	
 			
 					//And finally, adding the data to the modal of each beer listed:
 					$("#modal-body").html(`
 					<div class="row">
-					<div class="col m5 s12" align="center"> 
+					<div class="col l4 m5 s12" align="center"> 
 						<img src='${beerInfo.dataImage}' class='modalimg'>
 					</div> 
-					<div class="col m7 s12"> ${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% 
-						<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Brewery</h5> ${beerInfo.dataBrewery} <h5>Goes Great With</h5> ${beerInfo.dataFood}
+					<div class="col l8 m7 s12"> <h4>${beerInfo.dataName}</h4> ${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% 
+						<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Goes Great With</h5> ${beerInfo.dataFood}
 						</div> 
 					</div>
 					</div>`
