@@ -17,7 +17,7 @@ circle, body {
 
 }
 .logo {
-    min-height: 90px;
+    max-height: 150px;
      padding: 20px;
 }
 #dynoCard {

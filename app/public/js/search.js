@@ -44,7 +44,7 @@ $(document).ready(function() {
 				}
 
 				//Card UI building: tacking on the css is just a matter of preference here
-				var beerCard = $("<li class='collection-item'>").css("display", "inline-flex", "float", "relative");
+				var beerCard = $("<li class='collection-item animated fadeInUp'>").css("display", "inline-flex", "float", "relative");
 				var beerContent = $("<div class='card-content gray-text'>")
 					.attr("data-name", beerRes.beerName)
 					.attr("data-describe", beerRes.beerDescription)
