@@ -4,6 +4,15 @@
 label{
     color: rgb(40, 41, 41)
 }
+.card-title {
+    color: #1C1C1C; margin: auto
+}
+.card-content{
+margin: 6px auto;
+color: #a8a4b0;
+ margin: auto;
+  padding: 5px
+}
 li#list-stuff, #beer-view {
     background:  #cdcecf;
     margin: 0 auto;
@@ -15,6 +24,10 @@ circle, body {
     fill: #cdcecf;
     background:  #cdcecf;
 
+}
+#beercard{
+    display:inline-flex; 
+    float: relative
 }
 .logo {
     max-height: 150px;
@@ -49,7 +62,7 @@ footer {
 }
 li.collection-item.card {
     margin: 15px;
-    min-height: 450px;
+    min-height: 430px;
     width: 23vw;
     border-radius: 12px;
     -webkit-border-radius: 12px;
