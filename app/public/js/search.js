@@ -21,17 +21,11 @@ $(document).ready(function() {
 			url: queryURL,
 			method: "GET"
 		}).done(function(response) {
-		
 				if (response.indexOf(beer) == undefined){
 					var index = response.indexOf(beer)
 					var id = response.indexOf(beer) + 1
 					$("#beer-view").text("this exists at id# " + response.indexOf(beer) + 1 )
 			}
-				//if we remove index, beerFood is now an array.
-				//This means to diplay all foods we need a separate loop and some separate Jquery insode that loop
-				//then we need to also get that into the modal, and we have packed it as a value in the data-food attribute
-				//however, again, since it's an array, when you deal with it in the new modal, you may have to loop again
-			
 			for (var i = 0; i < response.length; i++) {
 				var beerRes = {
 					beerName : response[i].name,
@@ -44,7 +38,7 @@ $(document).ready(function() {
 				}
 
 				//Card UI building: tacking on the css is just a matter of preference here
-				var beerCard = $("<li class='collection-item animated fadeInUp'>").css("display", "inline-flex", "float", "relative");
+				var beerCard = $("<li id='beercard' class='collection-item animated fadeIn'>")
 				var beerContent = $("<div class='card-content gray-text'>")
 					.attr("data-name", beerRes.beerName)
 					.attr("data-describe", beerRes.beerDescription)
