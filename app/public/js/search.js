@@ -48,7 +48,7 @@ $(document).ready(function() {
 					.attr("data-food", beerRes.beerFood);
 
 				var cardSpan = $("<span>").addClass("card-title").append(`<i> ${beerRes.beerTagline}`)
-					.css({ color: "#1C1C1C", margin: "auto", padding: "5px" }).html(beer);
+					.html(beer);
 
 				var cardText = $("<p>").addClass("card-text");
 				var cardImage = $(`<img class='card-image'>`).attr("src", beerRes.beerImage);
@@ -57,7 +57,6 @@ $(document).ready(function() {
 				cardSpan.addClass("card-title").text(beerRes.beerName);
 				beerContent.prepend(cardSpan)
 					.append(`<i> ${beerRes.beerTagline}</i>`)
-					.css({ color: "#a8a4b0", margin: "auto", padding: "5px" });
 
 				beerContent.append(cardText);
 				beerCard.append(beerContent);
@@ -79,20 +78,18 @@ $(document).ready(function() {
 						dataFood: $(this).parent().attr("data-food"),
 						dataImage: $(this).parent().attr("data-img")
 					}
-
 					$("#modal1").modal("open");
 					$("#modal-header").empty();	
-			
 					//And finally, adding the data to the modal of each beer listed:
 					$("#modal-body").html(`
 					<div class="row">
-					<div class="col l4 m5 s12" align="center"> 
-						<img src='${beerInfo.dataImage}' class='modalimg'>
-					</div> 
-					<div class="col l8 m7 s12"> <h4>${beerInfo.dataName}</h4> ${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% 
-						<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Goes Great With</h5> ${beerInfo.dataFood}
+						<div class="col l4 m5 s12" align="center"> 
+							<img src='${beerInfo.dataImage}' class='modalimg'>
 						</div> 
-					</div>
+						<div class="col l8 m7 s12"> <h4>${beerInfo.dataName}</h4> ${beerInfo.dataDescribe} <h5>Alcohol by Volume</h5> ${beerInfo.dataAbv}% 
+							<h5>First Brewed On</h5> ${beerInfo.dataYear} <h5>Goes Great With</h5> ${beerInfo.dataFood}
+							</div> 
+						</div>
 					</div>`
 					);
 
