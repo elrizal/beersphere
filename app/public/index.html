@@ -9,7 +9,6 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="css/cutomized.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
 </head>
 
 <body>
@@ -24,28 +23,31 @@
                 <div class="container">
                     <h4>To drink or not to drink (that is not the question)</h4>
                     <div class="row">
-                        <h6  style="color: rgb(40, 41, 41)">Not sure what kind of craft beer you want to go with your next meal?</h6>
+                        <h6 style="color: rgb(40, 41, 41)">Not sure what kind of craft beer you want to go with your next meal?</h6>
                     </div>
                     <label for="beer-input">Look up by beer name or type:</label>
                     <br>
                     <input type="text" id="beer-input" style="width: 60%;">
                     <input id="find-beer" type="submit" value="Search" button class="btn waves-effect waves-light" style="margin-bottom: 10px;">
+
+                    <label for="food-input">Look up by food name or type:</label>
+                    <input type="text" id="food-input" style="width: 60%;">
+                    <input id="find-food" type="submit" value="Find Food" button class="btn waves-effect waves-light" style="margin-bottom: 10px;">
+
                 </div>
             </form>
         </div>
-
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" preserveAspectRatio="none">
-    <circle fill="white" cx="0" cy="100" r="100" />
-    <circle fill="white" cx="200" cy="100" r="100" />
-  </svg>
+            <circle fill="white" cx="0" cy="100" r="100" />
+            <circle fill="white" cx="200" cy="100" r="100" />
+        </svg>
     </header>
     <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-
-            <p id="modal-body">text</p>
+            <p id="modal-body"></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
 
@@ -68,8 +70,6 @@
     </div>
 
     <footer class="page-footer">
-
-
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
@@ -87,5 +87,7 @@
         <script type="text/javascript " src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
         <script type="text/javascript " src="js-materialize/materialize.min.js "></script>
         <script src="js/search.js "></script>
+        <script src="js/food.js "></script>
+
       </body>      
     </html>
