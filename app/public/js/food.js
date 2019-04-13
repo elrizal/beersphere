@@ -33,45 +33,31 @@ $(document).ready(function () {
                 noResults.text("Try Again");
                 $("#food-view").append(noResults);
             } else {
-                for (var i = 0; i < recipes.length; i++) {
-                    var foodPublisher = recipes[i].publisher;
-                    var foodTitle = recipes[i].title;
-                    var foodSourceURL = recipes[i].source_url;
-                    var foodImage = recipes[i].image_url;
-                 
-                    console.log("=======this is the new array" + foodTitle);
+                // for (var i = 0; i < recipes.length; i++) {
+                    var foodPublisher = recipes[2].publisher;
+                    var foodTitle = recipes[2].title;
+                    var foodSourceURL = recipes[2].source_url;
+                    var foodImage = recipes[2].image_url;
+            
+                console.log(foodTitle + foodPublisher)
+                    // var source = $("<a>");
+                    // source.addClass("source");
+                    // source.text(
+                    //     "Click here to get recipes for: " +
+                    //     foodTitle
+                    // );
+                    // source.attr("href", foodSourceURL);
 
-                    var listItem = $("<li>");
-                    listItem.addClass("food-item");
-                    listItem.append(
-                        "<h3>" +
-                        foodTitle +
-                        "</h3>" +
-                        "<hr>" +
-                        "PUBLISHER: " +
-                        foodPublisher +
-                        "<hr>"
-                        // + "DESCRIPTION: " + foodSourceURL + "<hr>"
-                    );
+                    // var image = $("<img>");
+                    // image.addClass("food-image");
+                    // image.attr("src", foodImage);
 
-                    var source = $("<a>");
-                    source.addClass("source");
-                    source.text(
-                        "Click here to get recipes for: " +
-                        foodTitle
-                    );
-                    source.attr("href", foodSourceURL);
+                    // listItem.append(image);
+                    // listItem.append(source);
 
-                    var image = $("<img>");
-                    image.addClass("food-image");
-                    image.attr("src", foodImage);
+                    // $("#food-view").append(listItem);
 
-                    listItem.append(image);
-                    listItem.append(source);
-
-                    $("#food-view").append(listItem);
-
-                }
+                
             }
         });
     });
