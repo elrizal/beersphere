@@ -15,11 +15,6 @@ $(document).ready(function () {
             url: proxy + queryURL,
             method: "POST"
         }).done(function (response) {
-    
-            // for (var i = 0; i < response.length; i++) {
-            //     newResult.push(response[i]);
-            // }
-            // console.log(newResult)
 
             var res = JSON.parse(response);
             var recipes = res.recipes;
@@ -40,24 +35,7 @@ $(document).ready(function () {
                     var foodImage = recipes[2].image_url;
             
                 console.log(foodTitle + foodPublisher)
-                    // var source = $("<a>");
-                    // source.addClass("source");
-                    // source.text(
-                    //     "Click here to get recipes for: " +
-                    //     foodTitle
-                    // );
-                    // source.attr("href", foodSourceURL);
 
-                    // var image = $("<img>");
-                    // image.addClass("food-image");
-                    // image.attr("src", foodImage);
-
-                    // listItem.append(image);
-                    // listItem.append(source);
-
-                    // $("#food-view").append(listItem);
-
-                
             }
         });
     });
