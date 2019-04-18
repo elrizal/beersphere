@@ -15,6 +15,11 @@ $(document).ready(function () {
             url: proxy + queryURL,
             method: "POST"
         }).done(function (response) {
+    
+            // for (var i = 0; i < response.length; i++) {
+            //     newResult.push(response[i]);
+            // }
+            // console.log(newResult)
 
             var res = JSON.parse(response);
             var recipes = res.recipes;
@@ -28,14 +33,45 @@ $(document).ready(function () {
                 noResults.text("Try Again");
                 $("#food-view").append(noResults);
             } else {
-                // for (var i = 0; i < recipes.length; i++) {
-                    var foodPublisher = recipes[2].publisher;
-                    var foodTitle = recipes[2].title;
-                    var foodSourceURL = recipes[2].source_url;
-                    var foodImage = recipes[2].image_url;
-            
-                console.log(foodTitle + foodPublisher)
+                for (var i = 0; i < recipes.length; i++) {
+                    var foodPublisher = recipes[i].publisher;
+                    var foodTitle = recipes[i].title;
+                    var foodSourceURL = recipes[i].source_url;
+                    var foodImage = recipes[i].image_url;
+                 
+                    console.log("=======this is the new array" + foodTitle);
 
+                    var listItem = $("<li>");
+                    listItem.addClass("food-item");
+                    listItem.append(
+                        "<h3>" +
+                        foodTitle +
+                        "</h3>" +
+                        "<hr>" +
+                        "PUBLISHER: " +
+                        foodPublisher +
+                        "<hr>"
+                        // + "DESCRIPTION: " + foodSourceURL + "<hr>"
+                    );
+
+                    var source = $("<a>");
+                    source.addClass("source");
+                    source.text(
+                        "Click here to get recipes for: " +
+                        foodTitle
+                    );
+                    source.attr("href", foodSourceURL);
+
+                    var image = $("<img>");
+                    image.addClass("food-image");
+                    image.attr("src", foodImage);
+
+                    listItem.append(image);
+                    listItem.append(source);
+
+                    $("#food-view").append(listItem);
+
+                }
             }
         });
     });
