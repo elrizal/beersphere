@@ -78,6 +78,27 @@ $(document).ready(function() {
 						dataFood: $(this).parent().attr("data-food"),
 						dataImage: $(this).parent().attr("data-img")
 					}
+					console.log("Food carried over from punkapi: " + beerInfo.dataFood);
+					var proxyCors = "https://cors-anywhere.herokuapp.com/";
+					var queryURLF =
+						`https://food2fork.com/api/search?key=f18f20279482aabaea4a0d26c8810819&q=${beerInfo.dataFood}`;
+						$.ajax({
+							url: proxyCors + queryURLF,
+							method: "POST"
+						}).done(function (response) {
+							var res = JSON.parse(response);
+							var recipes = res.recipes;
+						console.log(recipes)
+								// for (var i = 0; i < recipes.length; i++) {
+								// 	var foodPublisher = recipes[2].publisher;
+								// 	var foodTitle = recipes[2].title;
+								// 	var foodSourceURL = recipes[2].source_url;
+								// 	var foodImage = recipes[2].image_url;
+								// 	console.log(foodTitle)
+								// }
+							
+						})
+
 					$("#modal1").modal("open");
 					$("#modal-header").empty();	
 					//And finally, adding the data to the modal of each beer listed:
