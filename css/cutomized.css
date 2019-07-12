@@ -1,3 +1,27 @@
-.collection-item card {
+.collection-item, .card {
     margin: 20px;
+}
+.logo {
+    height: 130%;
+     padding: 20px;
+}
+#dynoCard {
+    border: none;
+}
+#beer-form {
+    margin-top: 110px;
+     color: white;
+}
+li {
+    margin: 20px;
+    display: inline-flex;
+    float: relative
+}
+.card {
+    margin: 20px;
+     float: left;
+}
+.beercontent {
+    width: 250px;
+     height: 250px
 }

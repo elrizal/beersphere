@@ -1,17 +1,13 @@
 $(document).ready(function() {
-	$(".modal").modal();
-	$(document).ready(function() {
-		$(".parallax").parallax();
-	});
+
+	// ** Materialize modals and parallax need to be initiated for use **
+	$(".modal").modal(); $(".parallax").parallax();
 
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
 
 		var beer = $("#beer-input").val();
-
-		// var food = $("#food-input").val();
-
-		console.log("beer = " + beer);
+		
 		if (beer === "") {
 			var queryURL =
 				"https://api.punkapi.com/v2/beers/?page=2&per_page=60&" + beer;
@@ -27,7 +23,7 @@ $(document).ready(function() {
 			url: queryURL,
 			method: "GET"
 		}).done(function(response) {
-			console.log(response);
+	
 				if (response.indexOf(beer) == undefined){
 				var index = response.indexOf(beer)
 				var id = response.indexOf(beer) + 1
@@ -45,7 +41,7 @@ $(document).ready(function() {
 				beerFood = beerFood.split(",").join(", ");
 
 				//if we remove index, beerFood is now an array.
-				//This means to diplay all foods we need a separate loop and some separate Jquery insode that loop
+				//This means to diplay all foods we need a separate loop and some separate jQ insode that loop
 				//then we need to also get that into the modal, and we have packed it as a value in the data-food attribute
 				//however, again, since it's an array, when you deal with it in the new modal, you may have to loop again
 
@@ -56,18 +52,9 @@ $(document).ready(function() {
 				var beerBrewery = response[i].withBreweries;
 				var beerOrganic = response[i].isOrganic;
 				var convertSearchterm = JSON.stringify(response);
-				
-				// for (var j = 0; j < malt.length; j++) {
-				// console.log( "ingredient " + malt[i].name + "value: " + malt[i].amount.value + "unit: " + malt[i].amount.unit)
-				// }
-				// for (var k = 0; k < hops.length; k++) {
-				// console.log( "ingredient " + hops[i].name + "value: " + hops[i].amount.value + "unit: " + hops[i].amount.unit)
-				// }
-				// for (var m = 0; m < yeast.length; m++) {
-				// console.log( "ingredient " + yeast)
-				// }
-				var beerCard = $("<li>").css("display", "inline-flex", "float", "relative");
-				var beerContent = $("<div>").css("width", "250px", "height", "250px");
+			
+				var beerCard = $("<li>");
+				var beerContent = $("<div>").addClass(beercontent);
 
 				beerCard.addClass("collection-item").css("margin", "auto");
 				beerContent
