@@ -9,6 +9,8 @@ $(document).ready(function() {
 
 		var beer = $("#beer-input").val();
 
+		// var food = $("#food-input").val();
+
 		console.log("beer = " + beer);
 		if (beer === "") {
 			var queryURL =
