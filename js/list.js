@@ -1,14 +1,12 @@
 $(document).ready(function() {
 	$(".modal").modal();
-	$(document).ready(function() {
+
 		$(".parallax").parallax();
-	});
+
 
 	$("#find-beer").on("click", function(event) {
 		event.preventDefault();
-
 		var beer = $("#beer-input").val();
-
 		console.log("beer = " + beer);
 		if (beer === "") {
 			var queryURL =
